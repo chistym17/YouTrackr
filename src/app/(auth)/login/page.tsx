@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
+import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -31,54 +32,66 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
-        <p className="mt-2 text-sm text-gray-700">
+        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">Welcome back</h1>
+        <p className="mt-3 text-lg text-gray-700">
           Don't have an account?{' '}
-          <Link href="/signup" className="font-medium text-[#FF0000] hover:text-red-600">
+          <Link href="/signup" className="font-semibold text-[#FF0000] hover:text-red-600">
             Sign up
           </Link>
         </p>
       </div>
 
-      <form onSubmit={handleEmailLogin} className="space-y-4">
+      <form onSubmit={handleEmailLogin} className="space-y-6">
         {error && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-3 text-sm text-red-600 bg-red-50 rounded-lg"
+            className="p-4 text-base text-red-600 bg-red-50 rounded-lg border border-red-100"
           >
             {error}
           </motion.div>
         )}
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-900">
+          <label htmlFor="email" className="block text-base font-semibold text-gray-900 mb-2">
             Email address
           </label>
-          <input
-            id="email"
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 shadow-sm focus:border-[#FF0000] focus:ring-[#FF0000] sm:text-sm"
-          />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <EnvelopeIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
+            </div>
+            <input
+              id="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="block w-full pl-10 rounded-lg border border-gray-300 bg-white px-4 py-3 text-lg text-gray-900 shadow-sm focus:border-[#FF0000] focus:ring-[#FF0000]"
+              placeholder="Enter your email"
+            />
+          </div>
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-900">
+          <label htmlFor="password" className="block text-base font-semibold text-gray-900 mb-2">
             Password
           </label>
-          <input
-            id="password"
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 shadow-sm focus:border-[#FF0000] focus:ring-[#FF0000] sm:text-sm"
-          />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <LockClosedIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
+            </div>
+            <input
+              id="password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="block w-full pl-10 rounded-lg border border-gray-300 bg-white px-4 py-3 text-lg text-gray-900 shadow-sm focus:border-[#FF0000] focus:ring-[#FF0000]"
+              placeholder="Enter your password"
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-between">
@@ -86,14 +99,14 @@ export default function LoginPage() {
             <input
               id="remember-me"
               type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-[#FF0000] focus:ring-[#FF0000] bg-white"
+              className="h-5 w-5 rounded border-gray-300 text-[#FF0000] focus:ring-[#FF0000] bg-white"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+            <label htmlFor="remember-me" className="ml-3 block text-base text-gray-900">
               Remember me
             </label>
           </div>
 
-          <Link href="/forgot-password" className="text-sm font-medium text-[#FF0000] hover:text-red-600">
+          <Link href="/forgot-password" className="text-base font-semibold text-[#FF0000] hover:text-red-600">
             Forgot password?
           </Link>
         </div>
@@ -103,7 +116,7 @@ export default function LoginPage() {
           whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={loading}
-          className="w-full rounded-lg bg-[#FF0000] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-[#FF0000] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-lg bg-[#FF0000] px-6 py-3.5 text-lg font-semibold text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-[#FF0000] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
         >
           {loading ? 'Signing in...' : 'Sign in'}
         </motion.button>
