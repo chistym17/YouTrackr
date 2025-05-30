@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Elements -->
+  <circle cx="400" cy="300" r="250" fill="#F0F7FF" opacity="0.5"/>
+  <circle cx="400" cy="300" r="200" fill="#E5F0FF" opacity="0.3"/>
+  
+  <!-- Video Player Frame -->
+  <rect x="200" y="150" width="400" height="300" rx="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Video Player Screen -->
+  <rect x="220" y="170" width="360" height="220" rx="10" fill="#F3F4F6"/>
+  
+  <!-- Play Button -->
+  <circle cx="400" cy="280" r="40" fill="#FF0000" opacity="0.9"/>
+  <path d="M385 260L425 280L385 300V260Z" fill="white"/>
+  
+  <!-- Focus Elements -->
+  <circle cx="400" cy="300" r="280" stroke="#FF0000" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+  <circle cx="400" cy="300" r="320" stroke="#FF0000" stroke-width="2" stroke-dasharray="4 4" opacity="0.2"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="150" cy="150" r="20" fill="#FF0000" opacity="0.1"/>
+  <circle cx="650" cy="450" r="30" fill="#FF0000" opacity="0.1"/>
+  <circle cx="200" cy="500" r="15" fill="#FF0000" opacity="0.1"/>
+  <circle cx="600" cy="100" r="25" fill="#FF0000" opacity="0.1"/>
+</svg> 
