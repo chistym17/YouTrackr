@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import YouTube from 'react-youtube';
 
 interface VideoPlayerProps {
@@ -37,6 +37,12 @@ export default function VideoPlayer({ videoUrl }: VideoPlayerProps) {
       controls: 0,
       modestbranding: 1,
       rel: 0,
+      showinfo: 0,
+      iv_load_policy: 3,
+      fs: 0,
+      disablekb: 1,
+      playsinline: 1,
+      origin: typeof window !== 'undefined' ? window.location.origin : '',
     },
   };
 
@@ -121,7 +127,33 @@ export default function VideoPlayer({ videoUrl }: VideoPlayerProps) {
           className="w-full h-full"
         />
         
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+        <AnimatePresence>
+          {!isPlaying && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handlePlayPause}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm z-10 flex items-center justify-center cursor-pointer"
+            >
+              <div className="text-center">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-16 h-16 mx-auto mb-4 bg-[#FF0000] rounded-full flex items-center justify-center"
+                >
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </motion.div>
+                <p className="text-white/80 text-lg font-medium">Click to Resume</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 z-20">
           <input
             type="range"
             min={0}
@@ -133,7 +165,6 @@ export default function VideoPlayer({ videoUrl }: VideoPlayerProps) {
           
           <div className="flex items-center justify-between mt-2">
             <div className="flex items-center space-x-4">
-              {/* Play/Pause Button */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
