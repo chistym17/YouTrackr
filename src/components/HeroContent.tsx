@@ -14,17 +14,17 @@ const HeroContent = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight drop-shadow-sm"
+        className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight"
       >
         Focus on what matters,{' '}
-        <span className="text-[#FF0000] drop-shadow-md">watch with purpose</span>
+        <span className="text-[#FF0000]">watch with purpose</span>
       </motion.h1>
       
       <motion.p 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="text-lg font-semibold text-gray-700 max-w-xl leading-relaxed"
+        className="text-lg font-semibold text-white/80 max-w-xl leading-relaxed"
       >
         Transform your YouTube experience. Track progress, stay focused, and build better watching habits with our distraction-free platform.
       </motion.p>
@@ -36,16 +36,16 @@ const HeroContent = () => {
         className="flex flex-col sm:flex-row gap-3"
       >
         <motion.button
-          whileHover={{ scale: 1.05, boxShadow: "0 4px 12px rgba(255, 0, 0, 0.2)" }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 bg-[#FF0000] text-white rounded-full font-bold hover:bg-red-600 transition-all shadow-lg shadow-red-200"
+          className="px-8 py-3 bg-[#FF0000] text-white rounded-lg font-bold hover:bg-red-600 transition-all shadow-lg shadow-red-500/20"
         >
           Get Started Free
         </motion.button>
         <motion.button
-          whileHover={{ scale: 1.05, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)" }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 bg-white text-gray-700 rounded-full font-semibold border border-gray-200 hover:bg-gray-50 transition-all shadow-md"
+          className="px-8 py-3 bg-white/5 text-white rounded-lg font-semibold border border-white/10 hover:bg-white/10 transition-all"
         >
           Learn More
         </motion.button>
@@ -55,17 +55,17 @@ const HeroContent = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
-        className="flex items-center gap-3 text-sm font-medium text-gray-600"
+        className="flex items-center gap-3 text-sm font-medium text-white/60"
       >
         <div className="flex -space-x-2">
           {[1, 2, 3].map((i) => (
             <div 
               key={i} 
-              className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white shadow-sm" 
+              className="w-8 h-8 rounded-full bg-[#FF0000]/10 border-2 border-white/10 shadow-sm" 
             />
           ))}
         </div>
-        <p className="font-semibold">Join 1,000+ focused learners</p>
+        <p className="font-semibold text-white/80">Join 1,000+ focused learners</p>
       </motion.div>
     </motion.div>
   );
