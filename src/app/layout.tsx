@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -80,6 +81,28 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white`}
       >
         {children}
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: '#1F2937',
+              color: '#fff',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            },
+            success: {
+              iconTheme: {
+                primary: '#10B981',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#EF4444',
+                secondary: '#fff',
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );

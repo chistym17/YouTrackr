@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
 import { UserCircleIcon, EnvelopeIcon, CalendarIcon } from '@heroicons/react/24/outline';
+import PlaylistsSection from '@/components/playlists/PlaylistsSection';
 
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
@@ -116,6 +117,8 @@ export default function DashboardPage() {
             </div>
           </div>
         </motion.div>
+
+        <PlaylistsSection />
       </div>
     </div>
   );
