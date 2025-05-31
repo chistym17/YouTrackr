@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PlusIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/navigation';
 import CreatePlaylistModal from './CreatePlaylistModal';
 import { playlistService, type Playlist } from '@/services/playlistService';
 import { toast } from 'react-hot-toast';
 
 export default function PlaylistsSection() {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +42,10 @@ export default function PlaylistsSection() {
       toast.error('Failed to create playlist');
       throw err; 
     }
+  };
+
+  const handlePlaylistClick = (playlistId: string) => {
+    router.push(`/dashboard/playlists/${playlistId}`);
   };
 
   return (
@@ -84,15 +90,16 @@ export default function PlaylistsSection() {
             {playlists.map((playlist) => (
               <div
                 key={playlist.id}
-                className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/10"
+                onClick={() => handlePlaylistClick(playlist.id)}
+                className="p-4 rounded-xl cursor-pointer transition-colors bg-white/5 hover:bg-white/10 border border-white/10"
               >
                 <h4 className="font-medium text-white">{playlist.name}</h4>
                 {playlist.description && (
-                  <p className="mt-1 text-sm text-gray-400">{playlist.description}</p>
+                  <p className="mt-1 text-sm text-gray-400 line-clamp-2">{playlist.description}</p>
                 )}
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-xs text-gray-500">
-                    {playlist?.videos?.length} videos
+                    {playlist?.videos?.length || 0} videos
                   </span>
                   <span className={`text-xs px-2 py-1 rounded-full ${
                     playlist.isPublic 
