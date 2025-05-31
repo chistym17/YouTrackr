@@ -8,7 +8,7 @@ const Navbar = () => {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100"
+      className="fixed w-full bg-black/40 backdrop-blur-lg z-50 border-b border-white/5"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -16,7 +16,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
           >
-            <Link href="/" className="text-2xl font-bold text-[#FF0000]">
+            <Link href="/" className="text-2xl font-bold text-[#FF0000] hover:text-red-600 transition-colors">
               YouFocus
             </Link>
           </motion.div>
@@ -31,14 +31,14 @@ const Navbar = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 text-sm font-medium text-[#FF0000] hover:bg-red-50 rounded-full transition-colors"
+              className="px-4 py-2 text-sm font-medium text-white hover:bg-white/5 rounded-lg transition-colors"
             >
               Sign In
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 text-sm font-medium text-white bg-[#FF0000] hover:bg-red-600 rounded-full transition-colors"
+              className="px-4 py-2 text-sm font-medium text-white bg-[#FF0000] hover:bg-red-600 rounded-lg transition-colors shadow-lg shadow-red-500/20"
             >
               Get Started
             </motion.button>
@@ -53,7 +53,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   <motion.div whileHover={{ scale: 1.05 }}>
     <Link 
       href={href}
-      className="text-gray-600 hover:text-[#FF0000] transition-colors"
+      className="text-white hover:text-[#FF0000] transition-colors"
     >
       {children}
     </Link>
