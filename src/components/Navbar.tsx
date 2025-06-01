@@ -1,22 +1,22 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full bg-black/40 backdrop-blur-lg z-50 border-b border-white/5"
+      className="fixed w-full bg-gray-900/40 backdrop-blur-lg z-50 border-b border-gray-800/50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <motion.div 
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
           >
-            <Link href="/" className="text-2xl font-bold text-[#FF0000] hover:text-red-600 transition-colors">
+            <Link href="/" className="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors">
               YouFocus
             </Link>
           </motion.div>
@@ -31,14 +31,14 @@ const Navbar = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 text-sm font-medium text-white hover:bg-white/5 rounded-lg transition-colors"
+              className="px-6 py-2.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-xl transition-all border border-gray-700/50"
             >
               Sign In
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 text-sm font-medium text-white bg-[#FF0000] hover:bg-red-600 rounded-lg transition-colors shadow-lg shadow-red-500/20"
+              className="px-6 py-2.5 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-xl transition-all shadow-lg shadow-blue-500/25"
             >
               Get Started
             </motion.button>
@@ -53,7 +53,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   <motion.div whileHover={{ scale: 1.05 }}>
     <Link 
       href={href}
-      className="text-white hover:text-[#FF0000] transition-colors"
+      className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
     >
       {children}
     </Link>
