@@ -40,7 +40,7 @@ export default function PlaylistsSection() {
       setIsModalOpen(false);
     } catch (err) {
       toast.error('Failed to create playlist');
-      throw err; 
+      throw err;
     }
   };
 
@@ -53,55 +53,60 @@ export default function PlaylistsSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
-      className="backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl border border-white/20 p-6"
+      className="backdrop-blur-lg bg-gray-800/50 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/50 p-8"
     >
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-semibold text-white">My Playlists</h3>
-        <button
+      <div className="flex items-center justify-between mb-8">
+        <h3 className="text-2xl font-semibold text-white">My Playlists</h3>
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all"
+          className="flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all shadow-lg shadow-blue-500/25"
         >
           <PlusIcon className="w-5 h-5" />
           <span>Create Playlist</span>
-        </button>
+        </motion.button>
       </div>
 
       <div className="space-y-4">
         {isLoading ? (
           <div className="flex justify-center py-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-500"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         ) : error ? (
           <div className="text-center py-8 text-red-400">
             <p>{error}</p>
             <button
               onClick={fetchPlaylists}
-              className="mt-2 text-sm text-purple-400 hover:text-purple-300"
+              className="mt-2 text-sm text-blue-400 hover:text-blue-300"
             >
               Try again
             </button>
           </div>
         ) : playlists.length === 0 ? (
-          <div className="text-center py-8 text-gray-400">
-            <p>No playlists yet. Create your first playlist!</p>
+          <div className="text-center py-12 text-gray-400 bg-gray-800/30 rounded-xl border border-gray-700/50">
+            <p className="text-lg">No playlists yet</p>
+            <p className="mt-2 text-sm">Create your first playlist to get started!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {playlists.map((playlist) => (
-              <div
+              <motion.div
                 key={playlist.id}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => handlePlaylistClick(playlist.id)}
-                className="p-4 rounded-xl cursor-pointer transition-colors bg-white/5 hover:bg-white/10 border border-white/10"
+                className="p-6 rounded-xl cursor-pointer transition-all bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 shadow-lg hover:shadow-xl"
               >
-                <h4 className="font-medium text-white">{playlist.name}</h4>
+                <h4 className="font-semibold text-white text-lg">{playlist.name}</h4>
                 {playlist.description && (
-                  <p className="mt-1 text-sm text-gray-400 line-clamp-2">{playlist.description}</p>
+                  <p className="mt-2 text-sm text-gray-400 line-clamp-2">{playlist.description}</p>
                 )}
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-xs text-gray-500">
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-sm text-gray-500">
                     {playlist?.videos?.length || 0} videos
                   </span>
-                  <span className={`text-xs px-2 py-1 rounded-full ${
+                  <span className={`text-xs px-3 py-1 rounded-full ${
                     playlist.isPublic 
                       ? 'bg-green-500/20 text-green-400' 
                       : 'bg-gray-500/20 text-gray-400'
@@ -109,7 +114,7 @@ export default function PlaylistsSection() {
                     {playlist.isPublic ? 'Public' : 'Private'}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
