@@ -123,10 +123,10 @@ export default function PlaylistDetailPage() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="lg:col-span-4 xl:col-span-3"
+            className="lg:col-span-5 xl:col-span-4"
           >
             <div className="backdrop-blur-lg bg-gray-800/50 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/50 p-4">
-              <h2 className="text-lg font-semibold text-white mb-4 px-2">
+              <h2 className="text-xl font-semibold text-white mb-4 px-2">
                 Videos ({playlist.videos.length})
               </h2>
 
@@ -137,13 +137,13 @@ export default function PlaylistDetailPage() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setSelectedVideo(video.youtubeId)}
-                    className={`w-full flex items-start space-x-3 p-2 rounded-xl transition-all ${
+                    className={`w-full flex items-start space-x-4 p-3 rounded-xl transition-all ${
                       selectedVideo === video.youtubeId
                         ? 'bg-blue-500/20 border border-blue-500/30'
                         : 'hover:bg-gray-700/50 border border-transparent'
                     }`}
                   >
-                    <div className="relative flex-shrink-0 w-32 h-20 rounded-lg overflow-hidden">
+                    <div className="relative flex-shrink-0 w-40 h-24 rounded-lg overflow-hidden">
                       <img
                         src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
                         alt={video.title}
@@ -151,11 +151,11 @@ export default function PlaylistDetailPage() {
                       />
                       <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-colors" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-medium text-white line-clamp-2 text-left">
+                    <div className="flex-1 min-w-0 py-1">
+                      <h3 className="text-base font-medium text-white line-clamp-2 text-left leading-snug">
                         {video.title}
                       </h3>
-                      <p className="text-xs text-gray-400 mt-1">
+                      <p className="text-sm text-gray-400 mt-2">
                         {video.duration || 'Unknown duration'}
                       </p>
                     </div>
@@ -169,7 +169,7 @@ export default function PlaylistDetailPage() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="lg:col-span-8 xl:col-span-9"
+            className="lg:col-span-7 xl:col-span-8"
           >
             <div className="backdrop-blur-lg bg-gray-800/50 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/50 p-4">
               <div className="max-w-4xl mx-auto">
