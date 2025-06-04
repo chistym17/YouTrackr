@@ -8,6 +8,7 @@ import VideoPlayer from '@/components/videos/VideoPlayer';
 import AddVideoModal from '@/components/playlists/AddVideoModal';
 import { toast } from 'react-hot-toast';
 import { PlusIcon } from '@heroicons/react/24/outline';
+import { formatDuration } from '@/services/youtubeService';
 
 export default function PlaylistDetailPage() {
   const { id } = useParams();
@@ -156,7 +157,7 @@ export default function PlaylistDetailPage() {
                         {video.title}
                       </h3>
                       <p className="text-sm text-gray-400 mt-2">
-                        {video.duration || 'Unknown duration'}
+                        {video.duration ? formatDuration(video.duration) : 'Unknown duration'}
                       </p>
                     </div>
                   </motion.button>
